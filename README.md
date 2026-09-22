@@ -35,16 +35,17 @@ A 2D top-down/platformer style **police-and-thief chase game** built in Unity.
 Assets/
   prefabs/     - Reusable game object prefabs
   Scenes/      - Unity scenes (SampleScene is the main scene)
-  scripts/     - Gameplay C# scripts (PlayerControl, policeWayPoints, ...)
+  scripts/     - Gameplay C# scripts (PlayerMovement, EnemyPatrol, ShadowSetup, die, ...)
   Settings/    - URP / render pipeline settings
   Welcome/     - Default assets from the Unity 2D template
 ```
 
 ## Current Status / TO DO
 
-- [x] Basic player control
-- [x] Police waypoint / patrol logic
-- [ ] **Shadow processing** — lighting/shadows are not implemented yet (currently the main gap)
+- [x] Basic player control (`PlayerMovement.cs`)
+- [x] Police waypoint / patrol logic (`EnemyPatrol.cs`)
+- [ ] **Shadow processing** — in progress. `ShadowSetup.cs` adds `ShadowCaster2D` to assigned blockers and enables shadows on a `Light2D`; still needs blockers/lights wired up in the scene, and global (ambient) light interaction to be tuned/tested.
+- [ ] **Player death / game-over handling** — `die.cs` is a stub, not yet implemented.
 - [ ] (add further TODOs here as the project progresses)
 
 ## Collaboration Notes
