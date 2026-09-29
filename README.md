@@ -35,7 +35,7 @@ A 2D top-down/platformer style **police-and-thief chase game** built in Unity.
 Assets/
   prefabs/     - Reusable game object prefabs
   Scenes/      - Unity scenes (SampleScene is the main scene)
-  scripts/     - Gameplay C# scripts (PlayerMovement, EnemyPatrol, ShadowSetup, die, ...)
+  scripts/     - Gameplay C# scripts (PlayerMovement, EnemyPatrol, PoliceVision, die, WinZone, ShadowSetup, ...)
   Settings/    - URP / render pipeline settings
   Welcome/     - Default assets from the Unity 2D template
 ```
@@ -44,8 +44,14 @@ Assets/
 
 - [x] Basic player control (`PlayerMovement.cs`)
 - [x] Police waypoint / patrol logic (`EnemyPatrol.cs`)
-- [ ] **Shadow processing** — in progress. `ShadowSetup.cs` adds `ShadowCaster2D` to assigned blockers and enables shadows on a `Light2D`; still needs blockers/lights wired up in the scene, and global (ambient) light interaction to be tuned/tested.
-- [ ] **Player death / game-over handling** — `die.cs` is a stub, not yet implemented.
+- [x] **Police light detection** — `PoliceVision.cs` kills the player when they are inside a police Spot Light 2D cone (uses the light's radius/angle) and not hidden behind a wall (any `Collider2D`).
+- [x] **Player death / game-over handling** — `die.cs` stops the player, freezes the game, shows GAME OVER; press R to restart the level.
+- [x] **Win condition / next level** — `WinZone.cs` (used by the `wayOut` prefab): reaching the exit area loads the next scene in the build list; the last level shows a final win screen (R to play again).
+- [x] Prefabs: `police`, `player`, `wayOut`, `wall`
+- [ ] **Shadow processing** — in progress. `ShadowSetup.cs` adds `ShadowCaster2D` to assigned blockers and enables shadows on a `Light2D`; currently only one blocker is assigned in `SampleScene` (the walls don't cast shadows yet) and its `spotLight` is empty. Global (ambient) light interaction still needs tuning/testing.
+- [ ] **Move `PoliceVision` onto the `police` prefab** — it is currently only added to the police instance in `SampleScene`, so new police copies won't detect the player.
+- [ ] **More levels** — only `SampleScene` exists; add level scenes (each with a `wayOut`) to the build scene list in order.
+- [ ] **Automatic level generator** — generate levels procedurally: place walls, the player start and the `wayOut` exit, and spawn police with patrol waypoints/rotations, making sure a path to the exit exists that can be taken without being caught (e.g. difficulty scaling with level number).
 - [ ] (add further TODOs here as the project progresses)
 
 ## Collaboration Notes
