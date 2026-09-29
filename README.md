@@ -49,8 +49,8 @@ Assets/
 - [x] **Win condition / next level** — `WinZone.cs` (used by the `wayOut` prefab): reaching the exit area loads the next scene in the build list; the last level shows a final win screen (R to play again).
 - [x] Prefabs: `police`, `player`, `wayOut`, `wall`
 - [ ] **Shadow processing** — in progress. `ShadowSetup.cs` adds `ShadowCaster2D` to assigned blockers and enables shadows on a `Light2D`; currently only one blocker is assigned in `SampleScene` (the walls don't cast shadows yet) and its `spotLight` is empty. Global (ambient) light interaction still needs tuning/testing.
-- [ ] **Move `PoliceVision` onto the `police` prefab** — it is currently only added to the police instance in `SampleScene`, so new police copies won't detect the player.
-- [ ] **More levels** — only `SampleScene` exists; add level scenes (each with a `wayOut`) to the build scene list in order.
+- [x] **`PoliceVision` on the `police` prefab** — every police copy detects the player.
+- [ ] **More levels** — only `SampleScene` exists (it has a `wayOut` exit); add more level scenes to the build scene list in order.
 - [ ] **Automatic level generator** — generate levels procedurally: place walls, the player start and the `wayOut` exit, and spawn police with patrol waypoints/rotations, making sure a path to the exit exists that can be taken without being caught (e.g. difficulty scaling with level number).
 - [ ] (add further TODOs here as the project progresses)
 
