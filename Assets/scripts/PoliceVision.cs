@@ -24,7 +24,7 @@ public class PoliceVision : MonoBehaviour
             spotLight = GetComponentInChildren<Light2D>();
         }
 
-        player = FindFirstObjectByType<die>();
+        player = FindAnyObjectByType<die>();
     }
 
     void Update()
